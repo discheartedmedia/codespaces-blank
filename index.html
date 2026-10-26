@@ -1,6 +1,509 @@
-<html>
-<title>Dischearted Media</title>
-<body bgcolor="ee4444">
-Dischearted Media
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscHearted Media | Audio & Video Restoration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #B91C1C;
+            --deep-red: #8B0000;
+            --gold: #D4A017;
+            --beige: #F5E6C8;
+            --cream: #FDF6E3;
+            --brown: #5C4033;
+            --dark: #2C1810;
+            --aged: #E8D5B7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 160, 23, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(185, 28, 28, 0.03) 0%, transparent 40%);
+        }
+
+        /* Vintage tape box frame effect */
+        .box-frame {
+            border: 12px solid var(--red);
+            border-radius: 4px;
+            box-shadow: 
+                inset 0 0 0 4px var(--gold),
+                inset 0 0 0 8px var(--deep-red),
+                0 8px 32px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .box-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 2px solid rgba(212, 160, 23, 0.4);
+            pointer-events: none;
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(180deg, #3E2723 0%, #2C1810 100%);
+            color: var(--beige);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 6px solid var(--red);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-family: 'Bebas Neue', 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        .logo-text span {
+            color: var(--red);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--beige);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero-inner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .hero img.hero-image {
+            width: 100%;
+            display: block;
+            filter: sepia(10%) contrast(1.05);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(44, 24, 16, 0.85));
+            padding: 3rem 2rem 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-overlay h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-overlay p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            color: var(--beige);
+        }
+
+        .cta {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 3px solid var(--gold);
+            border-radius: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 0 var(--deep-red);
+        }
+
+        .cta:hover {
+            background: var(--deep-red);
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--deep-red);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: var(--red);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin: 0.8rem auto 2rem;
+        }
+
+        .tagline {
+            text-align: center;
+            font-style: italic;
+            color: var(--brown);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .service-card {
+            background: var(--beige);
+            border: 6px solid var(--red);
+            padding: 1.8rem;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 2px solid var(--gold);
+            pointer-events: none;
+        }
+
+        .service-card h3 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--red);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        /* Process */
+        .process {
+            background: var(--aged);
+            padding: 3rem 1.5rem;
+            border-top: 8px solid var(--red);
+            border-bottom: 8px solid var(--red);
+        }
+
+        .process-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--red);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .step h3 {
+            font-family: 'Oswald', sans-serif;
+            margin-top: 1.5rem;
+            color: var(--deep-red);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About / Logo section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-logo {
+            text-align: center;
+        }
+
+        .about-logo img {
+            max-width: 320px;
+            width: 100%;
+            border: 8px solid var(--red);
+            border-radius: 50%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        }
+
+        .handwritten {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--brown);
+            margin-top: 0.5rem;
+        }
+
+        /* Specs bar like tape box */
+        .specs-bar {
+            background: var(--beige);
+            border: 4px solid var(--red);
+            padding: 1.2rem 1.5rem;
+            margin: 3rem auto;
+            max-width: 900px;
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .specs-bar strong {
+            color: var(--red);
+        }
+
+        /* Contact */
+        .contact-box {
+            background: var(--beige);
+            border: 10px solid var(--red);
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-box h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.4rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #2C1810;
+            color: var(--beige);
+            text-align: center;
+            padding: 2rem;
+            border-top: 6px solid var(--gold);
+            font-size: 0.9rem;
+        }
+
+        footer .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-overlay h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo-text">DISC<span>HEARTED</span> MEDIA</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-inner box-frame">
+        <img src="imagine_images/41ct4.jpg" alt="DiscHearted Media Vintage Tape Restoration" class="hero-image">
+        <div class="hero-overlay">
+            <h1>RESTORE THE SOUND OF MEMORY</h1>
+            <p>Professional audio & video restoration for reel-to-reel, cassettes, vinyl, VHS, film, and more. High fidelity. Extra care. Splice free.</p>
+            <a href="#contact" class="cta">Start Your Restoration</a>
+        </div>
+    </div>
+</section>
+
+<div class="specs-bar">
+    HIGH FIDELITY — EXTRA PLAY, EXTRA STRENGTH<br>
+    <strong>AUDIO • VIDEO • ANALOG • DIGITAL</strong> • TYPE: DISCHEARTED
+</div>
+
+<section id="services">
+    <h2 class="section-title">Restoration Services</h2>
+    <p class="tagline">Preserving the past. Enhancing the future.</p>
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>Reel-to-Reel</h3>
+            <p>Careful cleaning, baking, digitization, and noise reduction for 1/4" and larger open-reel tapes. Mono or stereo, 7.5 or 15 IPS.</p>
+        </div>
+        <div class="service-card">
+            <h3>Cassette Tapes</h3>
+            <p>Transfer of Type I, II, and IV cassettes with azimuth correction, wow & flutter reduction, and full spectral restoration.</p>
+        </div>
+        <div class="service-card">
+            <h3>Vinyl & LPs</h3>
+            <p>Gentle cleaning, high-resolution capture, and meticulous de-clicking while preserving the warmth of the original groove.</p>
+        </div>
+        <div class="service-card">
+            <h3>VHS & Video</h3>
+            <p>Stabilization, color correction, and digitization of VHS, Betamax, 8mm, and Hi8 tapes before they fade forever.</p>
+        </div>
+        <div class="service-card">
+            <h3>Film & Super 8</h3>
+            <p>Frame-by-frame scanning, dust removal, and color restoration of home movies and archival film.</p>
+        </div>
+        <div class="service-card">
+            <h3>Audio Repair</h3>
+            <p>Spectral editing, stem separation, and forensic restoration for damaged or degraded recordings of any era.</p>
+        </div>
+    </div>
+</section>
+
+<div class="process" id="process">
+    <h2 class="section-title" style="color: var(--deep-red);">Our Process</h2>
+    <div class="process-inner">
+        <div class="step">
+            <div class="step-number">01</div>
+            <h3>Assess</h3>
+            <p>We inspect your media, identify format, condition, and any special handling needs.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">02</div>
+            <h3>Prepare</h3>
+            <p>Gentle cleaning, baking when required, and proper tensioning for safe playback.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">03</div>
+            <h3>Capture</h3>
+            <p>High-resolution transfer using professional decks, turntables, and scanners.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">04</div>
+            <h3>Restore</h3>
+            <p>Careful noise reduction, EQ, and repair that respects the original recording.</p>
+        </div>
+    </div>
+</div>
+
+<section id="about">
+    <h2 class="section-title">About DiscHearted</h2>
+    <div class="about-grid">
+        <div class="about-logo">
+            <img src="imagine_images/tzG2I.jpg" alt="DiscHearted Media Logo">
+            <div class="handwritten">Mono. & Stereo.</div>
+        </div>
+        <div>
+            <p>Founded in the spirit of the great analog era, DiscHearted Media exists to rescue the sounds and images that matter most. Whether it’s a family reel-to-reel from 1967, a cassette demo, a VHS of a wedding, or a scratched LP that still holds magic, we treat every piece of media with the same care once reserved for Red Seal recordings.</p>
+            <br>
+            <p>We combine vintage hardware knowledge with modern restoration tools — including spectral editing, de-interlacing, and high-resolution capture — to deliver files that sound and look better than the day they were made, without losing their soul.</p>
+            <br>
+            <p><em>High Fidelity. Extra Strength. Splice Free.</em></p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="contact-box box-frame">
+        <h2>Send Us Your Media</h2>
+        <p style="margin-bottom: 1.5rem;">Ready to bring your recordings back to life? Get in touch for a free assessment.</p>
+        <p><strong>Email:</strong> restore@dischearted.media</p>
+        <p><strong>Phone:</strong> (555) 1800-TAPE</p>
+        <p style="margin-top: 1.5rem; font-style: italic;">Serving collectors, families, and archives nationwide.</p>
+        <a href="mailto:restore@dischearted.media" class="cta" style="margin-top: 1.5rem;">Request Assessment</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">DISCHEARTED MEDIA</div>
+    <p>Audio & Video Restoration • Preserving the Past. Enhancing the Future.</p>
+    <p style="margin-top: 0.8rem; opacity: 0.7;">© 2026 DiscHearted Media. All rights reserved. *Mylar is a registered trademark of DuPont.</p>
+</footer>
 
 </body>
+</html>
